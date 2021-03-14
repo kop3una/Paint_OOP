@@ -12,25 +12,20 @@ import java.io.IOException;
 
 public class App extends Application {
 
-    private static Scene scene;
+
     private static FileChooser fileChooser;
 
     private static Stage stage;
 
+
     @Override
     public void start(Stage stage) throws IOException {
-
-        scene = new Scene(loadFXML("mainScene"));
+        Scene scene = new Scene(loadFXML("mainScene"));
         stage.setScene(scene);
         fileChooser = new FileChooser();
         fileChooser.setTitle("Выбор файла");
-       // fileChooser.showOpenDialog(stage);
         stage.setTitle("Графический редактор");
         stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
     }
 
     static void openFile() {
