@@ -10,10 +10,12 @@ public class Line extends Figure {
     }
 
     @Override
-    protected void setLineConfig() {}
+    protected void setLineConfig() {
+    }
 
     @Override
-    protected void setFillConfig() {}
+    protected void setFillConfig() {
+    }
 
     @Override
     public void setPoints(double... points) {

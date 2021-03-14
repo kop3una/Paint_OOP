@@ -10,57 +10,57 @@ public class MainScene {
     private ColorPicker colpi;
 
     @FXML
-    private void changeColorBlack(){
+    private void changeColorBlack() {
         colpi.setValue(Color.BLACK);
     }
 
     @FXML
-    private void changeColorWhite(){
+    private void changeColorWhite() {
         colpi.setValue(Color.WHITE);
     }
 
     @FXML
-    private void changeColorRed(){
+    private void changeColorRed() {
         colpi.setValue(Color.RED);
     }
 
     @FXML
-    private void changeColorOrange(){
+    private void changeColorOrange() {
         colpi.setValue(Color.ORANGE);
     }
 
     @FXML
-    private void changeColorYellow(){
+    private void changeColorYellow() {
         colpi.setValue(Color.YELLOW);
     }
 
     @FXML
-    private void changeColorGreen(){
+    private void changeColorGreen() {
         colpi.setValue(Color.GREEN);
     }
 
     @FXML
-    private void changeColorBlue(){
+    private void changeColorBlue() {
         colpi.setValue(Color.BLUE);
     }
 
     @FXML
-    private void changeColorViolet(){
+    private void changeColorViolet() {
         colpi.setValue(Color.VIOLET);
     }
 
     @FXML
-    private void openFile(){
+    private void openFile() {
         App.openFile();
     }
 
     @FXML
-    private void saveFile(){
+    private void saveFile() {
         App.saveFile();
     }
 
     @FXML
-    private void saveAsFile(){
+    private void saveAsFile() {
         App.saveAsFile();
     }
 
