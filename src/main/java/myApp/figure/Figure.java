@@ -16,4 +16,6 @@ public abstract class Figure implements InterfaceFigure {
     public abstract void changePoints(double... points);
 
     public abstract void closeFigure();
+
+    public abstract boolean isPolyFigure ();
 }

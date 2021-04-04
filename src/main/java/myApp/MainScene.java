@@ -11,15 +11,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import myApp.figure.Figure;
 import myApp.figure.FigureList;
-import myApp.figure.particularFigure.Line;
-import myApp.figure.particularFigure.Rectangle;
+import myApp.figure.particularFigure.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainScene {
 
-    private final List<Figure> figuresSelectList = Arrays.asList(new Line(), new Rectangle());
+    private final List<Figure> figuresSelectList = Arrays.asList(new Line(), new Rectangle(), new Square(), new Circle(), new Ellipse(), new Polyline(), new Polygon());
     double x, y;
     @FXML
     private Canvas canvas;
@@ -35,6 +34,16 @@ public class MainScene {
     private Button btnLine;
     @FXML
     private Button btnRectangle;
+    @FXML
+    private Button btnSquare;
+    @FXML
+    private Button btnCircle;
+    @FXML
+    private Button btnEllipse;
+    @FXML
+    private Button btnPolyline;
+    @FXML
+    private Button btnPolygon;
     private final FigureList figureList = new FigureList();
     private int figureIndex;
     private Figure figure;
@@ -136,15 +145,19 @@ public class MainScene {
 
     @FXML
     private void selectFigure() {
-        btnLine.setOnMousePressed(event -> figureIndex = 0);
-        btnRectangle.setOnMousePressed(event -> figureIndex = 1);
+        btnLine.setOnMouseClicked(event -> figureIndex = 0);
+        btnRectangle.setOnMouseClicked(event -> figureIndex = 1);
+        btnSquare.setOnMouseClicked(event -> figureIndex = 2);
+        btnCircle.setOnMouseClicked(event -> figureIndex = 3);
+        btnEllipse.setOnMouseClicked(event -> figureIndex = 4);
+        btnPolyline.setOnMouseClicked(event -> figureIndex = 5);
+        btnPolygon.setOnMouseClicked(event -> figureIndex = 6);
     }
 
     @FXML
     private void click(MouseEvent e) {
      //  canvaspreview.setVisible(false);
         GraphicsContext context = canvas.getGraphicsContext2D();
-        Rectangle rectangle = new Rectangle();
         figure.setPoints(x, y, e.getX(), e.getY());
         figure.setLineConfig(context, colpi, slider );
         figure.setFillConfig(context,colpiFill);

@@ -5,10 +5,9 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import myApp.figure.Figure;
 
-public class Rectangle extends Figure {
+public class Circle extends Figure {
     double xstart = 0, ystart = 0, xend = 0, yend = 0;
     double height, weight;
-
     @Override
     public void drawFigure(GraphicsContext graphicsContext) {
         if (xstart <= xend) {
@@ -33,9 +32,14 @@ public class Rectangle extends Figure {
             }
 
         }
+        if (weight >= height){
+            weight = height;
+        } else {
+            height = weight;
+        }
 
-        graphicsContext.strokeRect(xstart, ystart, weight, height);
-        graphicsContext.fillRect(xstart,ystart,weight,height);
+        graphicsContext.strokeOval(xstart, ystart, weight, height);
+        graphicsContext.fillOval(xstart,ystart,weight,height);
     }
 
     @Override
@@ -64,11 +68,11 @@ public class Rectangle extends Figure {
 
     @Override
     public void closeFigure() {
+
     }
 
     @Override
     public boolean isPolyFigure() {
         return false;
     }
-
 }

@@ -5,7 +5,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import myApp.figure.Figure;
 
-public class Rectangle extends Figure {
+public class Square extends Figure {
     double xstart = 0, ystart = 0, xend = 0, yend = 0;
     double height, weight;
 
@@ -32,6 +32,12 @@ public class Rectangle extends Figure {
                 xstart = xend;
             }
 
+        }
+
+        if (weight >= height){
+            weight = height;
+        } else {
+            height = weight;
         }
 
         graphicsContext.strokeRect(xstart, ystart, weight, height);

@@ -10,4 +10,6 @@ public interface InterfaceFigure {
     void changePoints(double... points);
 
     void closeFigure();
+
+    boolean isPolyFigure();
 }

@@ -108,7 +108,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Slider fx:id="slider" focusTraversable="false" max="10.0" min="1.0" style="-fx-background-color: #507595;" />
+                <Slider fx:id="slider" blockIncrement="1.0" focusTraversable="false" max="25.0" min="1.0" style="-fx-background-color: #507595;" value="1.0" />
             </items>
         </ToolBar>
         <ColorPicker fx:id="colpi" focusTraversable="false" layoutX="78.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0">
@@ -148,7 +148,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnLine" focusTraversable="false" mnemonicParsing="false" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnLine" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -157,7 +157,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnRectangle" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnRectangle" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -166,7 +166,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnSquare" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -175,7 +175,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnCircle" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -184,7 +184,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnEllipse" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -193,7 +193,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnPolyline" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -202,7 +202,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnPolygon" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
