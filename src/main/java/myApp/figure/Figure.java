@@ -1,13 +1,15 @@
 package myApp.figure;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
 
 public abstract class Figure implements InterfaceFigure {
     public abstract void drawFigure(GraphicsContext graphicsContext);
 
-    protected abstract void setLineConfig();
+    public abstract void setLineConfig(GraphicsContext graphicsContext, ColorPicker colorPicker, Slider slider);
 
-    protected abstract void setFillConfig();
+    public abstract void setFillConfig(GraphicsContext graphicsContext, ColorPicker colorPicker);
 
     public abstract void setPoints(double... points);
 
