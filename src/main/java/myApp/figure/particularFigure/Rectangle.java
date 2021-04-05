@@ -35,7 +35,7 @@ public class Rectangle extends Figure {
         }
 
         graphicsContext.strokeRect(xstart, ystart, weight, height);
-        graphicsContext.fillRect(xstart,ystart,weight,height);
+        graphicsContext.fillRect(xstart, ystart, weight, height);
     }
 
     @Override
@@ -76,11 +76,11 @@ public class Rectangle extends Figure {
         return false;
     }
 
-    public double getX(){
+    public double getX() {
         return xstart;
     }
 
-    public double getY(){
+    public double getY() {
         return ystart;
     }
 

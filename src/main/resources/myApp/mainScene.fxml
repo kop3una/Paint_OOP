@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myApp.MainScene">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myApp.MainScene">
     <children>
         <MenuBar layoutY="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="800.0">
             <menus>
@@ -213,8 +213,8 @@
                 </Button>
             </children>
         </VBox>
-      <Canvas fx:id="canvaspreview" height="540.0" layoutX="38.0" layoutY="61.0" width="762.0" />
       <Canvas fx:id="canvas" height="540.0" layoutX="39.0" layoutY="61.0" onMouseClicked="#click" onMouseDragged="#drag" onMousePressed="#press" width="762.0" />
       <ColorPicker fx:id="colpiFill" focusTraversable="false" layoutX="198.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0" />
+      <Canvas fx:id="canvaspreview" height="540.0" layoutX="38.0" layoutY="61.0" onMouseClicked="#click" onMouseDragged="#drag" onMousePressed="#press" width="762.0" />
     </children>
 </AnchorPane>

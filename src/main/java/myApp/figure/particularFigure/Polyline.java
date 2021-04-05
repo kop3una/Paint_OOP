@@ -49,8 +49,10 @@ public class Polyline extends Figure {
 
     @Override
     public void changePoints(double... points) {
+        x[length] = 0;
+        y[length] = 0;
         length--;
-        System.out.println(length);
+       // System.out.println(length);
     }
 
     @Override

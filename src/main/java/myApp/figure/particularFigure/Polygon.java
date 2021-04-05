@@ -5,6 +5,8 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import myApp.figure.Figure;
 
+import java.util.Arrays;
+
 public class Polygon extends Figure {
     int length;
     double [] x = new double[1000] ;
@@ -12,6 +14,9 @@ public class Polygon extends Figure {
 
     public Polygon () {
         length = 0;
+        Arrays.fill(x,0);
+        Arrays.fill(y,0);
+
     }
 
     @Override
@@ -48,7 +53,7 @@ public class Polygon extends Figure {
     @Override
     public void changePoints(double... points) {
         length--;
-        System.out.println(length);
+     //   System.out.println(length);
     }
 
     @Override

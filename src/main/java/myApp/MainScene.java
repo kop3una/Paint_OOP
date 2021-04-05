@@ -20,6 +20,7 @@ public class MainScene {
 
     private final List<Figure> figuresSelectList = Arrays.asList(new Line(), new Rectangle(), new Square(), new Circle(), new Ellipse(), new Polyline(), new Polygon());
     private final FigureList figureList = new FigureList();
+    private boolean isDrawPoly = false;
     double x, y;
     @FXML
     private Canvas canvas;
@@ -144,7 +145,15 @@ public class MainScene {
     }
 
     @FXML
+    public void initialize() {
+        figureIndex = 0;
+        canvaspreview.setVisible(true);
+        canvas.setVisible(true);
+    }
+
+    @FXML
     private void selectFigure() {
+        isDrawPoly = false;
         btnLine.setOnMouseClicked(event -> figureIndex = 0);
         btnRectangle.setOnMouseClicked(event -> figureIndex = 1);
         btnSquare.setOnMouseClicked(event -> figureIndex = 2);
@@ -156,7 +165,9 @@ public class MainScene {
 
     @FXML
     private void click(MouseEvent e) {
-        //  canvaspreview.setVisible(false);
+      //  System.out.println(canvaspreview.visibleProperty());
+       // System.out.println(canvas.visibleProperty());
+        //canvaspreview.setVisible(true);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
         figure.setLineConfig(context, colpi, slider);
@@ -164,31 +175,62 @@ public class MainScene {
         if (figure.isPolyFigure()){
             figure.addPoints(e.getX(),e.getY());
             figure.drawFigure(context);
+          //  figure.changePoints();
         } else {
             figure.setPoints(x,y,e.getX(), e.getY());
-            //  System.out.println("click" + e.getX() + " " + e.getY());
+            System.out.println("click" + e.getX() + " " + e.getY());
             figureList.add(figure);
             figure.drawFigure(context);
-        }
+     //   canvaspreview.setVisible(false);
+       }
+    //    System.out.println(canvaspreview.visibleProperty());
+   //     System.out.println(canvas.visibleProperty());
     }
 
     @FXML
     private void press(MouseEvent e) {
-        // canvaspreview.setVisible(false);
-        figure = figuresSelectList.get(figureIndex);
+        GraphicsContext context = canvas.getGraphicsContext2D();
+        //canvaspreview.setVisible(true);
+        if (e.getButton() == MouseButton.SECONDARY){
+            if (figureIndex == 5){
+                figure = new Polyline();
+            }
+            if (figureIndex == 6){
+                figure = new Polygon();
+            }
+           // System.out.println(e.getButton());
+
+        }
+
+        if ((!isDrawPoly) && (figureIndex <=4)){
+            figure = figuresSelectList.get(figureIndex);
+        }
+
+        if ((!isDrawPoly) && (figureIndex == 5)){
+            figure = new Polyline();
+            }
+        if ((!isDrawPoly) && (figureIndex == 6)){
+            figure = new Polygon();
+        }
+
         if (figure.isPolyFigure()) {
+            isDrawPoly = true;
             figure.addPoints(e.getX(), e.getY());
         } else {
             x = e.getX();
             y = e.getY();
+    //        System.out.println(canvaspreview.visibleProperty());
+   ////         System.out.println(canvas.visibleProperty());
         }
-        //   System.out.println("press" + e.getX() + " " + e.getY());
-      //  figure.addPoints(e.getX(),e.getY());
+           System.out.println("press" + e.getX() + " " + e.getY());
+      //    figure.addPoints(e.getX(),e.getY());
     }
 
     @FXML
     private void drag(MouseEvent e) {
-        //  canvaspreview.setVisible(true);
+       // canvaspreview.setVisible(true);
+        System.out.println(canvaspreview.visibleProperty());
+        System.out.println(canvas.visibleProperty());
         GraphicsContext context = canvaspreview.getGraphicsContext2D();
         context.clearRect(0, 0, canvaspreview.getWidth(), canvaspreview.getHeight());
         figure.setLineConfig(context, colpi, slider);
@@ -201,6 +243,7 @@ public class MainScene {
             figure.setPoints(x,y,e.getX(), e.getY());
             figure.drawFigure(context);
         }
+
 
     }
 
