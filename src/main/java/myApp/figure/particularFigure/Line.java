@@ -6,11 +6,11 @@ import javafx.scene.control.Slider;
 import myApp.figure.Figure;
 
 public class Line extends Figure {
-    double xstart = 0,ystart = 0, xend = 0,yend = 0;
+    double xstart = 0, ystart = 0, xend = 0, yend = 0;
 
     @Override
     public void drawFigure(GraphicsContext graphicsContext) {
-        graphicsContext.strokeLine(xstart,ystart,xend,yend);
+        graphicsContext.strokeLine(xstart, ystart, xend, yend);
     }
 
     @Override
@@ -24,11 +24,15 @@ public class Line extends Figure {
     }
 
     @Override
-    public void setPoints(double ... points) {
-            xstart = points[0];
-            ystart = points[1];
-            xend = points[2];
-            yend = points[3];
+    public void setPoints(double... points) {
+        xstart = points[0];
+        ystart = points[1];
+        xend = points[2];
+        yend = points[3];
+    }
+
+    @Override
+    public void addPoints(double... points) {
     }
 
     @Override

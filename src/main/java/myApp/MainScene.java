@@ -19,6 +19,7 @@ import java.util.List;
 public class MainScene {
 
     private final List<Figure> figuresSelectList = Arrays.asList(new Line(), new Rectangle(), new Square(), new Circle(), new Ellipse(), new Polyline(), new Polygon());
+    private final FigureList figureList = new FigureList();
     double x, y;
     @FXML
     private Canvas canvas;
@@ -44,7 +45,6 @@ public class MainScene {
     private Button btnPolyline;
     @FXML
     private Button btnPolygon;
-    private final FigureList figureList = new FigureList();
     private int figureIndex;
     private Figure figure;
 
@@ -156,34 +156,52 @@ public class MainScene {
 
     @FXML
     private void click(MouseEvent e) {
-     //  canvaspreview.setVisible(false);
+        //  canvaspreview.setVisible(false);
+
         GraphicsContext context = canvas.getGraphicsContext2D();
-        figure.setPoints(x, y, e.getX(), e.getY());
-        figure.setLineConfig(context, colpi, slider );
-        figure.setFillConfig(context,colpiFill);
-      //  System.out.println("click" + e.getX() + " " + e.getY());
-        figureList.add(figure);
-        figure.drawFigure(context);
+        figure.setLineConfig(context, colpi, slider);
+        figure.setFillConfig(context, colpiFill);
+        if (figure.isPolyFigure()){
+            figure.addPoints(e.getX(),e.getY());
+            figure.drawFigure(context);
+        } else {
+            figure.setPoints(x,y,e.getX(), e.getY());
+            //  System.out.println("click" + e.getX() + " " + e.getY());
+            figureList.add(figure);
+            figure.drawFigure(context);
+        }
     }
 
     @FXML
     private void press(MouseEvent e) {
-       // canvaspreview.setVisible(false);
+        // canvaspreview.setVisible(false);
         figure = figuresSelectList.get(figureIndex);
-     //   System.out.println("press" + e.getX() + " " + e.getY());
-        x = e.getX();
-        y = e.getY();
+        if (figure.isPolyFigure()) {
+            figure.addPoints(e.getX(), e.getY());
+        } else {
+            x = e.getX();
+            y = e.getY();
+        }
+        //   System.out.println("press" + e.getX() + " " + e.getY());
+      //  figure.addPoints(e.getX(),e.getY());
     }
 
     @FXML
     private void drag(MouseEvent e) {
-      //  canvaspreview.setVisible(true);
+        //  canvaspreview.setVisible(true);
         GraphicsContext context = canvaspreview.getGraphicsContext2D();
         context.clearRect(0, 0, canvaspreview.getWidth(), canvaspreview.getHeight());
-        figure.setPoints(x, y, e.getX(), e.getY());
-        figure.setLineConfig(context, colpi, slider );
-        figure.setFillConfig(context,colpiFill);
-        figure.drawFigure(context);
+        figure.setLineConfig(context, colpi, slider);
+        figure.setFillConfig(context, colpiFill);
+        if (figure.isPolyFigure()){
+            figure.addPoints(e.getX(),e.getY());
+            figure.drawFigure(context);
+            figure.changePoints();
+        } else {
+            figure.setPoints(x,y,e.getX(), e.getY());
+            figure.drawFigure(context);
+        }
+
     }
 
 }

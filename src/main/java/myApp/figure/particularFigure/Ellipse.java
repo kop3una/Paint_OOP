@@ -58,6 +58,11 @@ public class Ellipse extends Figure {
     }
 
     @Override
+    public void addPoints(double... points) {
+
+    }
+
+    @Override
     public void changePoints(double... points) {
 
     }

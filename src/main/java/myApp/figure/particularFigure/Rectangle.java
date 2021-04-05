@@ -58,6 +58,11 @@ public class Rectangle extends Figure {
     }
 
     @Override
+    public void addPoints(double... points) {
+
+    }
+
+    @Override
     public void changePoints(double... points) {
 
     }
@@ -69,6 +74,14 @@ public class Rectangle extends Figure {
     @Override
     public boolean isPolyFigure() {
         return false;
+    }
+
+    public double getX(){
+        return xstart;
+    }
+
+    public double getY(){
+        return ystart;
     }
 
 }

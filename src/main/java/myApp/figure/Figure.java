@@ -13,6 +13,8 @@ public abstract class Figure implements InterfaceFigure {
 
     public abstract void setPoints(double... points);
 
+    public abstract void addPoints(double ... points);
+
     public abstract void changePoints(double... points);
 
     public abstract void closeFigure();
