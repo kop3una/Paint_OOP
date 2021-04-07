@@ -10,26 +10,26 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import myApp.figure.Figure;
+import myApp.figure.FigureFactory;
 import myApp.figure.FigureList;
-import myApp.figure.particularFigure.*;
+import myApp.figure.factory.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainScene {
 
-    private final List<Figure> figuresSelectList = Arrays.asList(new Line(), new Rectangle(), new Square(), new Circle(), new Ellipse(), new Polyline(), new Polygon());
+    private final List<FigureFactory> figuresSelectList = Arrays.asList(new LineFactory(), new RectangleFactory(), new SquareFactory(), new CircleFactory(), new EllipseFactory(), new PolylineFactory(), new PolygonFactory());
     private final FigureList figureList = new FigureList();
     private boolean isDrawPoly = false;
-    double x, y;
     @FXML
     private Canvas canvas;
     @FXML
-    private Canvas canvaspreview;
+    private Canvas canvasPreview;
     @FXML
-    private ColorPicker colpi;
+    private ColorPicker colPi;
     @FXML
-    private ColorPicker colpiFill;
+    private ColorPicker colPiFill;
     @FXML
     private Slider slider;
     @FXML
@@ -52,80 +52,80 @@ public class MainScene {
     @FXML
     private void changeColorBlack(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.BLACK);
+            colPi.setValue(Color.BLACK);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.BLACK);
+            colPiFill.setValue(Color.BLACK);
         }
     }
 
     @FXML
     private void changeColorWhite(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.WHITE);
+            colPi.setValue(Color.WHITE);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.WHITE);
+            colPiFill.setValue(Color.WHITE);
         }
     }
 
     @FXML
     private void changeColorRed(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.RED);
+            colPi.setValue(Color.RED);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.RED);
+            colPiFill.setValue(Color.RED);
         }
     }
 
     @FXML
     private void changeColorOrange(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.ORANGE);
+            colPi.setValue(Color.ORANGE);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.ORANGE);
+            colPiFill.setValue(Color.ORANGE);
         }
     }
 
     @FXML
     private void changeColorYellow(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.YELLOW);
+            colPi.setValue(Color.YELLOW);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.YELLOW);
+            colPiFill.setValue(Color.YELLOW);
         }
     }
 
     @FXML
     private void changeColorGreen(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.GREEN);
+            colPi.setValue(Color.GREEN);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.GREEN);
+            colPiFill.setValue(Color.GREEN);
         }
     }
 
     @FXML
     private void changeColorBlue(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.BLUE);
+            colPi.setValue(Color.BLUE);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.BLUE);
+            colPiFill.setValue(Color.BLUE);
         }
     }
 
     @FXML
     private void changeColorViolet(MouseEvent e) {
         if (e.getButton() == MouseButton.PRIMARY) {
-            colpi.setValue(Color.VIOLET);
+            colPi.setValue(Color.VIOLET);
         }
         if (e.getButton() == MouseButton.SECONDARY) {
-            colpiFill.setValue(Color.VIOLET);
+            colPiFill.setValue(Color.VIOLET);
         }
     }
 
@@ -147,7 +147,7 @@ public class MainScene {
     @FXML
     public void initialize() {
         figureIndex = 0;
-        canvaspreview.setVisible(true);
+        canvasPreview.setVisible(true);
         canvas.setVisible(true);
     }
 
@@ -165,86 +165,50 @@ public class MainScene {
 
     @FXML
     private void click(MouseEvent e) {
-      //  System.out.println(canvaspreview.visibleProperty());
-       // System.out.println(canvas.visibleProperty());
-        //canvaspreview.setVisible(true);
-
         GraphicsContext context = canvas.getGraphicsContext2D();
-        figure.setLineConfig(context, colpi, slider);
-        figure.setFillConfig(context, colpiFill);
-        if (figure.isPolyFigure()){
-            figure.addPoints(e.getX(),e.getY());
-            figure.drawFigure(context);
-          //  figure.changePoints();
+        figure.setLineConfig(context, colPi, slider);
+        figure.setFillConfig(context, colPiFill);
+        if (figure.isPolyFigure()) {
+            figure.addPoints(e.getX(), e.getY());
         } else {
-            figure.setPoints(x,y,e.getX(), e.getY());
-            System.out.println("click" + e.getX() + " " + e.getY());
-            figureList.add(figure);
-            figure.drawFigure(context);
-     //   canvaspreview.setVisible(false);
-       }
-    //    System.out.println(canvaspreview.visibleProperty());
-   //     System.out.println(canvas.visibleProperty());
+            figure.setPoints(e.getX(), e.getY());
+        }
+        figure.drawFigure(context);
     }
 
     @FXML
     private void press(MouseEvent e) {
-        GraphicsContext context = canvas.getGraphicsContext2D();
-        //canvaspreview.setVisible(true);
-        if (e.getButton() == MouseButton.SECONDARY){
-            if (figureIndex == 5){
-                figure = new Polyline();
-            }
-            if (figureIndex == 6){
-                figure = new Polygon();
-            }
-           // System.out.println(e.getButton());
-
+        FigureFactory figureFactory;
+        if (e.getButton() == MouseButton.SECONDARY) {
+            isDrawPoly = false;
         }
 
-        if ((!isDrawPoly) && (figureIndex <=4)){
-            figure = figuresSelectList.get(figureIndex);
-        }
-
-        if ((!isDrawPoly) && (figureIndex == 5)){
-            figure = new Polyline();
-            }
-        if ((!isDrawPoly) && (figureIndex == 6)){
-            figure = new Polygon();
+        if (!isDrawPoly) {
+            figureFactory = figuresSelectList.get(figureIndex);
+            figure = figureFactory.newFigure();
+            figureList.add(figure);
         }
 
         if (figure.isPolyFigure()) {
             isDrawPoly = true;
-            figure.addPoints(e.getX(), e.getY());
-        } else {
-            x = e.getX();
-            y = e.getY();
-    //        System.out.println(canvaspreview.visibleProperty());
-   ////         System.out.println(canvas.visibleProperty());
         }
-           System.out.println("press" + e.getX() + " " + e.getY());
-      //    figure.addPoints(e.getX(),e.getY());
+        figure.addPoints(e.getX(), e.getY());
     }
 
     @FXML
     private void drag(MouseEvent e) {
-       // canvaspreview.setVisible(true);
-        System.out.println(canvaspreview.visibleProperty());
-        System.out.println(canvas.visibleProperty());
-        GraphicsContext context = canvaspreview.getGraphicsContext2D();
-        context.clearRect(0, 0, canvaspreview.getWidth(), canvaspreview.getHeight());
-        figure.setLineConfig(context, colpi, slider);
-        figure.setFillConfig(context, colpiFill);
-        if (figure.isPolyFigure()){
-            figure.addPoints(e.getX(),e.getY());
+        GraphicsContext context = canvasPreview.getGraphicsContext2D();
+        context.clearRect(0, 0, canvasPreview.getWidth(), canvasPreview.getHeight());
+        figure.setLineConfig(context, colPi, slider);
+        figure.setFillConfig(context, colPiFill);
+        if (figure.isPolyFigure()) {
+            figure.addPoints(e.getX(), e.getY());
             figure.drawFigure(context);
             figure.changePoints();
         } else {
-            figure.setPoints(x,y,e.getX(), e.getY());
+            figure.setPoints(e.getX(), e.getY());
             figure.drawFigure(context);
         }
-
-
     }
 
 }

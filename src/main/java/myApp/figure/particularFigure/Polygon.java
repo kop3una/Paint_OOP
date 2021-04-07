@@ -9,14 +9,11 @@ import java.util.Arrays;
 
 public class Polygon extends Figure {
     int length;
-    double [] x = new double[1000] ;
-    double [] y = new double[1000];
+    double [] x = new double[10] ;
+    double [] y = new double[10];
 
     public Polygon () {
         length = 0;
-        Arrays.fill(x,0);
-        Arrays.fill(y,0);
-
     }
 
     @Override
@@ -47,6 +44,10 @@ public class Polygon extends Figure {
         x[length] = points[0];
         y[length] = points[1];
         length++;
+        if (x.length == length){
+            x = Arrays.copyOf(x,x.length*2);
+            y = Arrays.copyOf(y,y.length*2);
+        }
         System.out.println(length);
     }
 

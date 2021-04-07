@@ -6,36 +6,36 @@ import javafx.scene.control.Slider;
 import myApp.figure.Figure;
 
 public class Rectangle extends Figure {
-    double xstart = 0, ystart = 0, xend = 0, yend = 0;
-    double height, weight;
+    private double xStart = 0, yStart = 0, xEnd = 0, yEnd = 0,x,y;
 
     @Override
     public void drawFigure(GraphicsContext graphicsContext) {
-        if (xstart <= xend) {
-            if (ystart <= yend) {
-                weight = xend - xstart;
-                height = yend - ystart;
+        double height, weight;
+        if (xStart <= xEnd) {
+            if (yStart <= yEnd) {
+                weight = xEnd - xStart;
+                height = yEnd - yStart;
             } else {
-                weight = xend - xstart;
-                height = ystart - yend;
-                ystart = yend;
+                weight = xEnd - xStart;
+                height = yStart - yEnd;
+                yStart = yEnd;
             }
         } else {
-            if (ystart >= yend) {
-                height = ystart - yend;
-                weight = xstart - xend;
-                xstart = xend;
-                ystart = yend;
+            if (yStart >= yEnd) {
+                height = yStart - yEnd;
+                weight = xStart - xEnd;
+                xStart = xEnd;
+                yStart = yEnd;
             } else {
-                height = yend - ystart;
-                weight = xstart - xend;
-                xstart = xend;
+                height = yEnd - yStart;
+                weight = xStart - xEnd;
+                xStart = xEnd;
             }
 
         }
 
-        graphicsContext.strokeRect(xstart, ystart, weight, height);
-        graphicsContext.fillRect(xstart, ystart, weight, height);
+        graphicsContext.strokeRect(xStart, yStart, weight, height);
+        graphicsContext.fillRect(xStart, yStart, weight, height);
     }
 
     @Override
@@ -51,15 +51,16 @@ public class Rectangle extends Figure {
 
     @Override
     public void setPoints(double... points) {
-        xstart = points[0];
-        ystart = points[1];
-        xend = points[2];
-        yend = points[3];
+        xStart = x;
+        yStart = y;
+        xEnd = points[0];
+        yEnd = points[1];
     }
 
     @Override
     public void addPoints(double... points) {
-
+        x = points[0];
+        y = points[1];
     }
 
     @Override
@@ -74,14 +75,6 @@ public class Rectangle extends Figure {
     @Override
     public boolean isPolyFigure() {
         return false;
-    }
-
-    public double getX() {
-        return xstart;
-    }
-
-    public double getY() {
-        return ystart;
     }
 
 }

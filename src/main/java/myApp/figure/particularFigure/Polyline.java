@@ -4,14 +4,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import myApp.figure.Figure;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Polyline extends Figure {
   //  ArrayList<Double> x = new ArrayList<>();
     int length;
-    double [] x = new double[1000] ;
-    double [] y = new double[1000];
+    double [] x = new double[10] ;
+    double [] y = new double[10];
 
     public Polyline () {
         length = 0;
@@ -44,6 +43,10 @@ public class Polyline extends Figure {
         x[length] = points[0];
         y[length] = points[1];
         length++;
+        if (x.length == length){
+            x = Arrays.copyOf(x,x.length*2);
+            y = Arrays.copyOf(y,y.length*2);
+        }
         System.out.println(length);
     }
 

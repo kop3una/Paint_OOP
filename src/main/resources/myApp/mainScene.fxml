@@ -111,7 +111,7 @@
                 <Slider fx:id="slider" blockIncrement="1.0" focusTraversable="false" max="25.0" min="1.0" style="-fx-background-color: #507595;" value="1.0" />
             </items>
         </ToolBar>
-        <ColorPicker fx:id="colpi" focusTraversable="false" layoutX="78.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0">
+        <ColorPicker fx:id="colPi" focusTraversable="false" layoutX="78.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0">
             <value>
                 <Color />
             </value>
@@ -214,7 +214,7 @@
             </children>
         </VBox>
       <Canvas fx:id="canvas" height="540.0" layoutX="39.0" layoutY="61.0" onMouseClicked="#click" onMouseDragged="#drag" onMousePressed="#press" width="762.0" />
-      <ColorPicker fx:id="colpiFill" focusTraversable="false" layoutX="198.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0" />
-      <Canvas fx:id="canvaspreview" height="540.0" layoutX="38.0" layoutY="61.0" onMouseClicked="#click" onMouseDragged="#drag" onMousePressed="#press" width="762.0" />
+      <ColorPicker fx:id="colPiFill" focusTraversable="false" layoutX="198.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0" />
+      <Canvas fx:id="canvasPreview" height="540.0" layoutX="38.0" layoutY="61.0" onMouseClicked="#click" onMouseDragged="#drag" onMousePressed="#press" width="762.0" />
     </children>
 </AnchorPane>

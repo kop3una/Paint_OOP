@@ -6,42 +6,55 @@ import javafx.scene.control.Slider;
 import myApp.figure.Figure;
 
 public class Square extends Figure {
-    double xstart = 0, ystart = 0, xend = 0, yend = 0;
+    double xStart = 0, yStart = 0, xEnd = 0, yEnd = 0,x,y;
     double height, weight;
 
     @Override
     public void drawFigure(GraphicsContext graphicsContext) {
-        if (xstart <= xend) {
-            if (ystart <= yend) {
-                weight = xend - xstart;
-                height = yend - ystart;
+        if (xStart <= xEnd) {
+            if (yStart <= yEnd) {
+                weight = xEnd - xStart;
+                height = yEnd - yStart;
+                if ((weight <= height)) {
+                    height = weight;
+                } else {
+                    weight = height;
+                }
             } else {
-                weight = xend - xstart;
-                height = ystart - yend;
-                ystart = yend;
+                weight = xEnd - xStart;
+                height = yStart - yEnd;
+                if ((weight <= height)) {
+                    height = weight;
+                } else {
+                    weight = height;
+                }
+                yStart = yStart - height;
             }
         } else {
-            if (ystart >= yend) {
-                height = ystart - yend;
-                weight = xstart - xend;
-                xstart = xend;
-                ystart = yend;
+            if (yStart >= yEnd) {
+                height = yStart - yEnd;
+                weight = xStart - xEnd;
+                if ((weight <= height)) {
+                    height = weight;
+                } else {
+                    weight = height;
+                }
+                xStart = xStart - weight;
+                yStart = yStart - height;
             } else {
-                height = yend - ystart;
-                weight = xstart - xend;
-                xstart = xend;
+                height = yEnd - yStart;
+                weight = xStart - xEnd;
+                if ((weight <= height)) {
+                    height = weight;
+                } else {
+                    weight = height;
+                }
+                xStart = xStart - weight;
             }
-
         }
 
-        if (weight >= height){
-            weight = height;
-        } else {
-            height = weight;
-        }
-
-        graphicsContext.strokeRect(xstart, ystart, weight, height);
-        graphicsContext.fillRect(xstart,ystart,weight,height);
+        graphicsContext.strokeRect(xStart, yStart, weight, height);
+        graphicsContext.fillRect(xStart, yStart,weight,height);
     }
 
     @Override
@@ -57,15 +70,17 @@ public class Square extends Figure {
 
     @Override
     public void setPoints(double... points) {
-        xstart = points[0];
-        ystart = points[1];
-        xend = points[2];
-        yend = points[3];
+        xStart = x;
+        yStart = y;
+        xEnd = points[0];
+        yEnd = points[1];
+        System.out.println(xStart + " "+ yStart+ " " +xEnd+ " "+yEnd);
     }
 
     @Override
     public void addPoints(double... points) {
-
+        x = points[0];
+        y = points[1];
     }
 
     @Override
