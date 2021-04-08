@@ -44,5 +44,11 @@ public class FigureList extends ArrayList<Figure> {
         }
     }
 
+    public void drawPoly(GraphicsContext context){
+        for (Figure figure : List) {
+            figure.drawFigure(context);
+        }
+    }
+
 
 }

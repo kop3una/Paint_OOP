@@ -54,7 +54,6 @@ public class Polyline extends Figure {
         x[length] = 0;
         y[length] = 0;
         length--;
-       // System.out.println(length);
     }
 
     @Override

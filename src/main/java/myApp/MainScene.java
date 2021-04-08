@@ -167,15 +167,17 @@ public class MainScene {
     private void click(MouseEvent e) {
         GraphicsContext context = canvas.getGraphicsContext2D();
         GraphicsContext contextPreview = canvasPreview.getGraphicsContext2D();
-        contextPreview.clearRect(0,0,canvasPreview.getWidth(),canvasPreview.getHeight());
+        contextPreview.clearRect(0, 0, canvasPreview.getWidth(), canvasPreview.getHeight());
         figure.setLineConfig(context, colPi, slider);
         figure.setFillConfig(context, colPiFill);
         if (figure.isPolyFigure()) {
             figure.addPoints(e.getX(), e.getY());
+            context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            figureList.drawPoly(context);
         } else {
             figure.setPoints(e.getX(), e.getY());
+            figure.drawFigure(context);
         }
-        figure.drawFigure(context);
     }
 
     @FXML
@@ -213,14 +215,14 @@ public class MainScene {
         }
         //context.clearRect(0, 0, canvasPreview.getWidth(), canvasPreview.getHeight());
     }
-    
+
     @FXML
-    private void undo (){
+    private void undo() {
         figureList.undo(canvas);
     }
 
     @FXML
-    private void redo(){
+    private void redo() {
         figureList.redo(canvas);
     }
 

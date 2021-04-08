@@ -48,7 +48,6 @@ public class Polygon extends Figure {
             x = Arrays.copyOf(x,x.length*2);
             y = Arrays.copyOf(y,y.length*2);
         }
-        System.out.println(length);
     }
 
     @Override
