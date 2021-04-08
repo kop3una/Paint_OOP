@@ -37,9 +37,9 @@
         </MenuBar>
         <HBox layoutY="31.0" prefHeight="30.0" prefWidth="78.0">
             <children>
-                <Button fx:id="back" focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="btnUndo" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#undo" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="16.0" fitWidth="16.0" onMouseClicked="#undo" pickOnBounds="true" preserveRatio="true">
                             <viewport>
                                 <Rectangle2D height="16.0" width="16.0" />
                             </viewport>
@@ -52,9 +52,9 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="forward" focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                <Button fx:id="forward" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#redo" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="btnRedo" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../img/forward.png" />
                             </image>

@@ -55,7 +55,6 @@ public class Ellipse extends Figure {
         yStart = y;
         xEnd = points[0];
         yEnd = points[1];
-        System.out.println(xStart + " "+ yStart+ " " +xEnd+ " "+yEnd);
     }
 
     @Override
