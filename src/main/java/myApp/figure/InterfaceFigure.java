@@ -1,6 +1,9 @@
 package myApp.figure;
 
 import javafx.scene.canvas.GraphicsContext;
+import myApp.serialize.Serialize;
+
+import java.io.Serializable;
 
 public interface InterfaceFigure {
     void drawFigure(GraphicsContext graphicsContext);

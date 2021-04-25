@@ -16,18 +16,6 @@
                     <items>
                         <MenuItem fx:id="openfile" mnemonicParsing="false" onAction="#openFile" text="Открыть" />
                         <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Сохранить" />
-                        <MenuItem mnemonicParsing="false" onAction="#saveAsFile" text="Сохранить как" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Ввод">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Отрезок" />
-                        <MenuItem mnemonicParsing="false" text="Прямоугольник" />
-                        <MenuItem mnemonicParsing="false" text="Круг" />
-                        <MenuItem mnemonicParsing="false" text="Квадрат" />
-                        <MenuItem mnemonicParsing="false" text="Эллипс" />
-                        <MenuItem mnemonicParsing="false" text="Ломаная" />
-                        <MenuItem mnemonicParsing="false" text="Многоугольник" />
                     </items>
                 </Menu>
             </menus>

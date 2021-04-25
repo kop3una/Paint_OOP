@@ -14,13 +14,14 @@ import myApp.figure.FigureFactory;
 import myApp.figure.FigureList;
 import myApp.figure.factory.*;
 
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainScene {
 
     private final List<FigureFactory> figuresSelectList = Arrays.asList(new LineFactory(), new RectangleFactory(), new SquareFactory(), new CircleFactory(), new EllipseFactory(), new PolylineFactory(), new PolygonFactory());
-    private final FigureList figureList = new FigureList();
+    private FigureList figureList = new FigureList();
     private boolean isDrawPoly = false;
     @FXML
     private Canvas canvas;
@@ -131,17 +132,15 @@ public class MainScene {
 
     @FXML
     private void openFile() {
-        App.openFile();
+        GraphicsContext context = canvas.getGraphicsContext2D();
+       figureList = App.openFile();
+       context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+       figureList.drawAllFigure(context);
     }
 
     @FXML
     private void saveFile() {
-        App.saveFile();
-    }
-
-    @FXML
-    private void saveAsFile() {
-        App.saveAsFile();
+        App.saveFile(figureList);
     }
 
     @FXML
@@ -224,7 +223,26 @@ public class MainScene {
     @FXML
     private void redo() {
         figureList.redo(canvas);
+
+//        Cat cat = new Cat();
+//        cat.name = "Murka";
+//        cat.age = 5;
+//        cat.weight = 4;
+//
+//        //писать результат сериализации будем во Writer(StringWriter)
+//        StringWriter writer = new StringWriter();
+//
+//        //это объект Jackson, который выполняет сериализацию
+//        ObjectMapper mapper = new ObjectMapper();
+//
+//        // сама сериализация: 1-куда, 2-что
+//        mapper.writeValue(writer, cat);
+//
+//        //преобразовываем все записанное во StringWriter в строку
+//        String result = writer.toString();
+//        System.out.println(result);
     }
+
 
 }
 

@@ -50,5 +50,11 @@ public class FigureList extends ArrayList<Figure> {
         }
     }
 
+    public void drawAllFigure(GraphicsContext context){
+        for (Figure figure : List){
+            figure.drawFigure(context);
+        }
+    }
+
 
 }

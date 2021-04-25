@@ -4,19 +4,27 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import myApp.figure.Figure;
+import javafx.scene.paint.Color;
+import myApp.figure.MyColor;
+//import java.awt.Color;
 
 public class Line extends Figure {
     private double xStart = 0, yStart = 0, xEnd = 0, yEnd = 0;
+    private final MyColor stroke = new MyColor();
+    private double lineWidth;
 
     @Override
     public void drawFigure(GraphicsContext graphicsContext) {
+        Color color = Color.color(stroke.setRed(),stroke.setGreen(),stroke.setBlue());
+        graphicsContext.setStroke(color);
+        graphicsContext.setLineWidth(lineWidth);
         graphicsContext.strokeLine(xStart, yStart, xEnd, yEnd);
     }
 
     @Override
     public void setLineConfig(GraphicsContext graphicsContext, ColorPicker colorPicker, Slider slider) {
-        graphicsContext.setStroke(colorPicker.getValue());
-        graphicsContext.setLineWidth(slider.getValue());
+        stroke.getColor(colorPicker.getValue());
+        lineWidth = slider.getValue();
     }
 
     @Override

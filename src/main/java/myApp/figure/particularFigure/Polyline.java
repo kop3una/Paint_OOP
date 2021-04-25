@@ -3,7 +3,10 @@ package myApp.figure.particularFigure;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
+import javafx.scene.paint.Color;
 import myApp.figure.Figure;
+import myApp.figure.MyColor;
+
 import java.util.Arrays;
 
 public class Polyline extends Figure {
@@ -11,6 +14,8 @@ public class Polyline extends Figure {
     int length;
     double [] x = new double[10] ;
     double [] y = new double[10];
+    private final MyColor stroke = new MyColor();
+    private double lineWidth;
 
     public Polyline () {
         length = 0;
@@ -18,14 +23,16 @@ public class Polyline extends Figure {
 
     @Override
     public void drawFigure(GraphicsContext graphicsContext) {
+        Color color = Color.color(stroke.setRed(),stroke.setGreen(),stroke.setBlue());
+        graphicsContext.setStroke(color);
+        graphicsContext.setLineWidth(lineWidth);
         graphicsContext.strokePolyline(x,y,length);
     }
 
     @Override
     public void setLineConfig(GraphicsContext graphicsContext, ColorPicker colorPicker, Slider slider) {
-        graphicsContext.setStroke(colorPicker.getValue());
-        graphicsContext.setLineWidth(slider.getValue());
-
+        stroke.getColor(colorPicker.getValue());
+        lineWidth = slider.getValue();
     }
 
     @Override

@@ -4,7 +4,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 
-public abstract class Figure implements InterfaceFigure {
+import java.io.Serializable;
+
+public abstract class Figure implements InterfaceFigure, Serializable {
     public abstract void drawFigure(GraphicsContext graphicsContext);
 
     public abstract void setLineConfig(GraphicsContext graphicsContext, ColorPicker colorPicker, Slider slider);
