@@ -46,8 +46,10 @@ public class Trapezoid extends Figure implements Serializable {
         Color colorFill = Color.color(fill.setRed(),fill.setGreen(),fill.setBlue());
         graphicsContext.setFill(colorFill);
         graphicsContext.setLineWidth(lineWidth);
-        graphicsContext.strokeRect(xStart, yStart, weight, height);
-        graphicsContext.fillRect(xStart, yStart, weight, height);
+        double [] x = {xStart + weight / 4 * 1,xStart+weight/4*3,xStart+weight,xStart};
+        double [] y = {yStart,yStart,yStart+height,yStart+height};
+        graphicsContext.strokePolygon(x,y,x.length);
+        graphicsContext.fillPolygon(x,y,x.length);
     }
 
     @Override

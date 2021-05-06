@@ -10,5 +10,5 @@ module myApp {
     exports myApp;
     exports myApp.figure;
     exports myApp.figure.factory;
-    provides ShapeFactory with EllipseFactory, CircleFactory, LineFactory, PolygonFactory, RectangleFactory, PolylineFactory, SquareFactory;
+    provides ShapeFactory with LineFactory,RectangleFactory,SquareFactory,CircleFactory,EllipseFactory,PolylineFactory,PolygonFactory;
 }

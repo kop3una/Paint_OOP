@@ -1,5 +1,6 @@
 package myApp;
 
+import OOPcore.Buttons;
 import OOPcore.PluginLoader;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -9,18 +10,24 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import myApp.figure.Figure;
 import myApp.figure.FigureList;
 import myApp.figure.factory.*;
-import java.util.Arrays;
+
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class MainScene {
 
-    private final List<ShapeFactory> figuresSelectList = Arrays.asList(new LineFactory(), new RectangleFactory(), new SquareFactory(), new CircleFactory(), new EllipseFactory(), new PolylineFactory(), new PolygonFactory());
+
+    private List<ShapeFactory> figuresSelectList; //= Arrays.asList(new LineFactory(), new RectangleFactory(), new SquareFactory(), new CircleFactory(), new EllipseFactory(), new PolylineFactory(), new PolygonFactory());
     private FigureList figureList = new FigureList();
     private boolean isDrawPoly = false;
+
+    @FXML
+    private VBox vBox;
     @FXML
     private Canvas canvas;
     @FXML
@@ -31,20 +38,6 @@ public class MainScene {
     private ColorPicker colPiFill;
     @FXML
     private Slider slider;
-    @FXML
-    private Button btnLine;
-    @FXML
-    private Button btnRectangle;
-    @FXML
-    private Button btnSquare;
-    @FXML
-    private Button btnCircle;
-    @FXML
-    private Button btnEllipse;
-    @FXML
-    private Button btnPolyline;
-    @FXML
-    private Button btnPolygon;
     private int figureIndex;
     private Figure figure;
 
@@ -131,9 +124,9 @@ public class MainScene {
     @FXML
     private void openFile() {
         GraphicsContext context = canvas.getGraphicsContext2D();
-       figureList = App.openFile();
-       context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-       figureList.drawAllFigure(context);
+        figureList = App.openFile();
+        context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        figureList.drawAllFigure(context);
     }
 
     @FXML
@@ -142,25 +135,19 @@ public class MainScene {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         figureIndex = 0;
         canvasPreview.setVisible(true);
         canvas.setVisible(true);
         PluginLoader pluginLoader = new PluginLoader();
-        List<ShapeFactory> factories = pluginLoader.getEveryFactory();
-        System.out.println(factories);
-    }
-
-    @FXML
-    private void selectFigure() {
-        isDrawPoly = false;
-        btnLine.setOnMouseClicked(event -> figureIndex = 0);
-        btnRectangle.setOnMouseClicked(event -> figureIndex = 1);
-        btnSquare.setOnMouseClicked(event -> figureIndex = 2);
-        btnCircle.setOnMouseClicked(event -> figureIndex = 3);
-        btnEllipse.setOnMouseClicked(event -> figureIndex = 4);
-        btnPolyline.setOnMouseClicked(event -> figureIndex = 5);
-        btnPolygon.setOnMouseClicked(event -> figureIndex = 6);
+        figuresSelectList = pluginLoader.getEveryFactory();
+        sortFactories(figuresSelectList);
+        System.out.println(figuresSelectList);
+        Buttons buttons = new Buttons(figuresSelectList);
+        for (Button button : buttons.getButtonsList()){
+            vBox.getChildren().add(button);
+            button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {isDrawPoly = false; figureIndex = buttons.getButtonIndex(button);  System.out.println(figureIndex);});
+        }
     }
 
     @FXML
@@ -226,6 +213,16 @@ public class MainScene {
 
     }
 
+    private void sortFactories (List<ShapeFactory> factories){
+        ShapeFactory factory;
+        int x = factories.size() / 7;
+        int y = factories.size() % 7;
+        for (int i=0; i < ((x-1)*7)+y; i++){
+            factory = factories.get(0);
+            factories.remove(0);
+            factories.add(factory);
+        }
+    }
 
 }
 

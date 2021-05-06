@@ -107,7 +107,7 @@
                 <Insets />
             </opaqueInsets>
         </ColorPicker>
-        <VBox layoutY="61.0" prefHeight="305.0" prefWidth="38.0">
+        <VBox fx:id="vBox" layoutY="61.0" prefHeight="305.0" prefWidth="38.0">
             <children>
                 <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
                     <graphic>
@@ -132,69 +132,6 @@
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../img/eraser.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="btnLine" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/line.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="btnRectangle" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/rectangle.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="btnSquare" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/square.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="btnCircle" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/circle.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="btnEllipse" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/ellipse.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="btnPolyline" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/polyline.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="btnPolygon" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../img/polygon.png" />
                             </image>
                         </ImageView>
                     </graphic>

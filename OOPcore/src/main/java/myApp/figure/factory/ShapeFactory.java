@@ -7,6 +7,7 @@ import java.util.ServiceLoader;
 import java.util.stream.Collectors;
 
 public abstract class ShapeFactory {
+    public abstract String getName ();
     public abstract Figure newFigure();
     public static List<ShapeFactory> getServices(ModuleLayer layer) {
         ServiceLoader<ShapeFactory> load = ServiceLoader
