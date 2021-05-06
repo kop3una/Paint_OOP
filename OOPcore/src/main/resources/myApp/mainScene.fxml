@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myApp.MainScene">
+    <children>
+        <MenuBar layoutY="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="800.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Файл">
+                    <items>
+                        <MenuItem fx:id="openfile" mnemonicParsing="false" onAction="#openFile" text="Открыть" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Сохранить" />
+                    </items>
+                </Menu>
+            </menus>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </MenuBar>
+        <HBox layoutY="31.0" prefHeight="30.0" prefWidth="78.0">
+            <children>
+                <Button fx:id="btnUndo" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#undo" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" onMouseClicked="#undo" pickOnBounds="true" preserveRatio="true">
+                            <viewport>
+                                <Rectangle2D height="16.0" width="16.0" />
+                            </viewport>
+                            <image>
+                                <Image url="@../img/back.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="forward" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#redo" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fx:id="btnRedo" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/forward.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </HBox>
+        <ToolBar layoutX="318.0" layoutY="31.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="482.0">
+            <items>
+                <Button fx:id="btnBlack" alignment="TOP_LEFT" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorBlack" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: black;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="btnWhite" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorWhite" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="btnRed" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorRed" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: red;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="orangebutton" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorOrange" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: orange;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="yellowbutton" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorYellow" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: yellow;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="greenbutton" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorGreen" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: green;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="bluebutton" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorBlue" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: blue;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="violetbutton" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeColorViolet" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: violet;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Slider fx:id="slider" blockIncrement="1.0" focusTraversable="false" max="25.0" min="1.0" style="-fx-background-color: #507595;" value="1.0" />
+            </items>
+        </ToolBar>
+        <ColorPicker fx:id="colPi" focusTraversable="false" layoutX="78.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0">
+            <value>
+                <Color />
+            </value>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </ColorPicker>
+        <VBox layoutY="61.0" prefHeight="305.0" prefWidth="38.0">
+            <children>
+                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/pencil.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/fill.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button focusTraversable="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/eraser.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnLine" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/line.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnRectangle" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/rectangle.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnSquare" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/square.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnCircle" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/circle.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnEllipse" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/ellipse.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnPolyline" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/polyline.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="btnPolygon" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#selectFigure" onMousePressed="#selectFigure" prefHeight="30.0" prefWidth="38.0">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/polygon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+      <Canvas fx:id="canvas" height="540.0" layoutX="39.0" layoutY="61.0" onMouseClicked="#click" onMouseDragged="#drag" onMousePressed="#press" width="762.0" />
+      <ColorPicker fx:id="colPiFill" focusTraversable="false" layoutX="198.0" layoutY="31.0" prefHeight="30.0" prefWidth="120.0" />
+      <Canvas fx:id="canvasPreview" height="540.0" layoutX="38.0" layoutY="61.0" onMouseClicked="#click" onMouseDragged="#drag" onMousePressed="#press" width="762.0" />
+    </children>
+</AnchorPane>
