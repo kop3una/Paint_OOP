@@ -1,12 +1,13 @@
 package myApp.figure.factory;
 
-import myApp.figure.FigureFactory;
+import myApp.figure.Figure;
 
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.stream.Collectors;
 
-public abstract class ShapeFactory implements FigureFactory {
+public abstract class ShapeFactory {
+    public abstract Figure newFigure();
     public static List<ShapeFactory> getServices(ModuleLayer layer) {
         ServiceLoader<ShapeFactory> load = ServiceLoader
                 .load(layer, ShapeFactory.class);

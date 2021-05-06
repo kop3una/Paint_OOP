@@ -11,7 +11,6 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import myApp.figure.Figure;
-import myApp.figure.FigureFactory;
 import myApp.figure.FigureList;
 import myApp.figure.factory.*;
 import java.util.Arrays;
@@ -183,7 +182,7 @@ public class MainScene {
 
     @FXML
     private void press(MouseEvent e) {
-        FigureFactory figureFactory;
+        ShapeFactory figureFactory;
         if (e.getButton() == MouseButton.SECONDARY) {
             isDrawPoly = false;
         }

@@ -1,3 +1,7 @@
+import myApp.figure.factory.ShapeFactory;
+import org.figure.Trapezoid;
+import org.figure.TrapezoidFactory;
+
 module org.figure {
     requires javafx.controls;
     requires javafx.fxml;
@@ -5,4 +9,5 @@ module org.figure {
 
     opens org.figure to javafx.fxml;
     exports org.figure;
+    provides ShapeFactory with TrapezoidFactory;
 }

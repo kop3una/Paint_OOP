@@ -1,3 +1,6 @@
+import myApp.figure.factory.ShapeFactory;
+import myApp.figure.factory.*;
+
 module myApp {
     uses myApp.figure.factory.ShapeFactory;
     requires javafx.controls;
@@ -7,4 +10,5 @@ module myApp {
     exports myApp;
     exports myApp.figure;
     exports myApp.figure.factory;
+    provides ShapeFactory with EllipseFactory, CircleFactory, LineFactory, PolygonFactory, RectangleFactory, PolylineFactory, SquareFactory;
 }
